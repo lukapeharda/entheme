@@ -236,6 +236,13 @@ input[type="reset"],
 input[type="submit"] {
 	cursor: pointer; /* Improves usability and consistency of cursor style between image-type 'input' and others */
 	-webkit-appearance: button; /* Corrects inability to style clickable 'input' types in iOS */
+	border: 3px solid #ffffff;
+	border-radius: 0;
+	padding: 0.5em 1em;
+	color: #ffffff;
+	background: transparent;
+	box-shadow: none;
+	font-size: 1em;
 }
 button:hover,
 html input[type="button"]:hover,
@@ -277,9 +284,10 @@ input[type="email"],
 input[type="url"],
 input[type="password"],
 input[type="search"],
-textarea {
+textarea,
+select {
 	color: #666;
-	border: 1px solid #ccc;
+	border: 0;
 }
 input[type="text"]:focus,
 input[type="email"]:focus,
@@ -293,7 +301,8 @@ input[type="text"],
 input[type="email"],
 input[type="url"],
 input[type="password"],
-input[type="search"] {
+input[type="search"],
+select {
 	padding: 0.5em;
 	width: 100%;
 }
@@ -743,14 +752,33 @@ html[xmlns] .slides {display: block;}
 /* =Contact Form 7 styling
 ----------------------------------------------- */
 .wpcf7-not-valid {
-	border-right: 3px solid red;
+	border-left: 3px solid red !important;
 }
-.wpcf7-submit {
-	border: 3px solid #ffffff;
-	border-radius: 0;
-	padding: 0.5em 1em;
-	color: #ffffff;
-	background: transparent;
-	box-shadow: none;
-	font-size: 1em;
+.wpcf7-not-valid-tip {
+	top: 0 !important;
+	right: 1% !important;
+	left: 0 !important;
+	background: none !important;
+	color: red !important;
+	border: 0 !important;
+	text-align: right;
+	width: auto !important;
+}
+.wpcf7-response-output {
+	margin: 0 !important;
+}
+.wpcf7-validation-errors {
+	border: 0 !important;
+	border-left: 3px solid #f7e700 !important;
+}
+.wpcf7-mail-sent-ok {
+	border: 0 !important;
+	border-left: 3px solid #398f14 !important;
+}
+.wpcf7-mail-sent-ng {
+	border: 0 !important;
+	border-left: 3px solid #ff0000 !important;
+}
+.wpcf7-form .ajax-loader {
+	display: none !important;
 }

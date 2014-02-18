@@ -15,6 +15,10 @@
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300&subset=latin,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
+<?php $favicon = get_option('favicon'); ?>
+<?php if (!empty($favicon)): ?>
+<link rel="shortcut icon" href="<?php echo $favicon; ?>">
+<?php endif; ?>
 
 <?php wp_head(); ?>
 </head>

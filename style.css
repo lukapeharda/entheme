@@ -465,6 +465,9 @@ a:active {
 .menu-toggle {
 	cursor: pointer;
 	display: none;
+	position: absolute;
+	top: 0px;
+	right: 10px;
 }
 
 @media screen and (max-width: 600px) {
@@ -472,12 +475,25 @@ a:active {
 	.main-navigation.toggled .nav-menu {
 		display: block;
 	}
-
+	.main-navigation {
+		float: none;
+		clear: both;
+	}
 	.main-navigation ul {
 		display: none;
 	}
 	.main-navigation li {
 		clear: left;
+		float: none;
+		width: 100%;
+		margin-left: 0;
+	}
+	.menu-menu-1-container {
+		position: absolute;
+		top: 60px;
+		left: 0;
+		width: 100%;
+		background: #ffffff;
 	}
 }
 
@@ -527,6 +543,9 @@ article.page {
 article.page h2 {
 	font-size: 1.5em;
 	padding-bottom: 0.5em;
+}
+.post-date {
+	opacity: 0.5;
 }
 
 /* =Asides
@@ -607,35 +626,6 @@ object {
 	text-align: right;
 	width: 50%;
 }
-
-
-/* =Comments
------------------------------------------------ */
-
-.comment-content a {
-	word-wrap: break-word;
-}
-.bypostauthor {
-}
-
-
-/* =Widgets
------------------------------------------------ */
-
-.widget {
-	margin: 0 0 1.5em;
-}
-
-/* Make sure select elements fit in widgets */
-.widget select {
-	max-width: 100%;
-}
-
-/* Search widget */
-.widget_search .search-submit {
-	display: none;
-}
-
 
 /* =Infinite Scroll
 ----------------------------------------------- */

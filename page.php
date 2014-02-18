@@ -9,8 +9,14 @@
  *
  * @package Entheme
  */
-?>	
-	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
+if ('' === get_option('permalink_structure')) {
+    $page_id = 'post-' . get_the_ID();
+} else {
+    $page_id = apply_filters('entheme_page_slug', get_permalink(), false);
+}
+?>
+	<article id="<?php echo $page_id; ?>" <?php post_class(); ?>>
 		<header class="entry-header">
 			<h1 class="entry-title"><?php the_title(); ?></h1>
 		</header><!-- .entry-header -->

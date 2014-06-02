@@ -14,12 +14,12 @@
 <title><?php wp_title( '|', true, 'right' ); ?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300&subset=latin,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
+<?php echo get_option('custom_font'); ?>
+
 <?php $favicon = get_option('favicon'); ?>
 <?php if (!empty($favicon)): ?>
 <link rel="shortcut icon" href="<?php echo $favicon; ?>">
 <?php endif; ?>
-
 <?php wp_head(); ?>
 </head>
 
@@ -30,7 +30,7 @@
 		<?php $nav_logo = get_option('logo_navigation'); ?>
 		<?php if (!empty($nav_logo)): ?>
 		<div class="site-branding">
-			<a href="#page" class="logo-navigation hidden" rel="home" title="<?php bloginfo('name'); ?>"><img src="<?php echo esc_url($nav_logo); ?>" alt="<?php bloginfo('name'); ?>" /></a>
+			<a href="<?php echo site_url(); ?>#page" class="logo-navigation<?php if(is_home()) : ?> hidden<?php endif; ?>" rel="home" title="<?php bloginfo('name'); ?>"><img src="<?php echo esc_url($nav_logo); ?>" alt="<?php bloginfo('name'); ?>" /></a>
 		</div>
 		<?php endif; ?>
 

@@ -7,6 +7,7 @@
 
 define('ENTHEME_DEFAULT_PAGE_BACKGROUND_COLOR', '#cccccc');
 define('ENTHEME_DEFAULT_PAGE_TEXT_COLOR', '#333333');
+define('ENTHEME_DEFAULT_FONT_INVOCATION', '<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300&subset=latin,cyrillic-ext,latin-ext" rel="stylesheet" type="text/css">');
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -192,7 +193,32 @@ function entheme_instantiate_slider()
 {
     wp_enqueue_script('flexslider', get_template_directory_uri() . '/js/jquery.flexslider-min.js', array('jquery'));
 }
-add_action('entheme_instantiate_slider', 'entheme_instantiate_slider');
+add_action('get_template_part_blog-page', 'entheme_instantiate_slider');
+
+// Fragment cache based on Mark Jaquith code
+function entheme_fragment_cache_output()
+{
+    $output = get_transient('entheme_everything');
+    if (!empty($output)) {
+        echo $output;
+        return true;
+    } else {
+        ob_start();
+        return false;
+    }
+}
+
+function entheme_fragment_cache_store()
+{
+    $output = ob_get_flush();
+    set_transient('entheme_everything', $output, 24 * HOUR_IN_SECONDS);
+}
+
+function entheme_fragment_cache_delete($post_id)
+{
+    delete_transient('entheme_everything');
+}
+add_action('save_post', 'entheme_fragment_cache_delete');
 
 /**
  * Custom functions that act independently of the theme templates.

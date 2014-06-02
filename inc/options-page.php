@@ -66,7 +66,6 @@ function entheme_generate_social_link($key, $link)
 function entheme_custom_options_css($data)
 {
     return '#primary{background-color:' . $data['home_background_color'] . ';}';
-// #site-navigation li:hover {background-color: ' . $data['navigation_hover_background_color'] . '}';
 }
 
 function entheme_register_settings()
@@ -79,9 +78,7 @@ function entheme_register_settings()
     register_setting('entheme-settings-group-visual', 'logo_main');
     register_setting('entheme-settings-group-visual', 'logo_navigation');
     register_setting('entheme-settings-group-visual', 'home_background_color');
-    // register_setting('entheme-settings-group-visual', 'navigation_hover_background_color');
     register_setting('entheme-settings-group-visual', 'show_site_description');
-    // register_setting('entheme-settings-group-visual', 'use_page_background_color');
 
     register_setting('entheme-settings-group-analytics', 'entheme_head_code');
 
@@ -95,6 +92,8 @@ function entheme_register_settings()
     register_setting('entheme-settings-group-map', 'entheme_map_zoom');
 
     register_setting('entheme-settings-group-styling', 'custom_css');
+    register_setting('entheme-settings-group-styling', 'custom_font');
+    register_setting('entheme-settings-group-styling', 'copyright_text');
 }
 
 function entheme_settings_page()
@@ -106,7 +105,7 @@ function entheme_settings_page()
         'analytics' => __('Analytics', 'entheme'),
         'social' => __('Social', 'entheme'),
         'map' => __('Map', 'entheme'),
-        'styling' => __('Styling', 'entheme'),
+        'styling' => __('Styling &amp; Other', 'entheme'),
     );
 
     $active_tab = 'visual';
@@ -276,13 +275,29 @@ function entheme_settings_page()
         <form method="post" action="options.php">
             <?php settings_fields('entheme-settings-group-styling'); ?>
             <?php do_action('entheme-settings-group-styling'); ?>
-            <h3 class="title"><?php _e('Custom CSS', 'entheme'); ?></h3>
+            <h3 class="title"><?php _e('Styling', 'entheme'); ?></h3>
             <table class="form-table">
                 <tr valign="top">
-                    <th scope="row"><label for="custom_css"><?php _e('Custom CSS in &lt;head /&gt;', 'entheme'); ?></label></th>
+                    <th scope="row"><label for="custom_css"><?php _e('Custom CSS', 'entheme'); ?></label></th>
                     <td>
                         <textarea name="custom_css" rows="10" cols="50" id="custom_css" class="large-text code"><?php echo get_option('custom_css'); ?></textarea>
                         <p class="description"><?php _e('Enter custom CSS code without &lt;style /&gt; tags.', 'entheme'); ?></p>
+                    </td>
+                </tr>
+                <tr valign="top">
+                    <th scope="row"><label for="custom_font"><?php _e('Custom Google Font', 'entheme'); ?></label></th>
+                    <td>
+                        <input type="text" class="large-text code" name="custom_font" value="<?php echo esc_attr(get_option('custom_font', ENTHEME_DEFAULT_FONT_INVOCATION)); ?>" />
+                        <p class="description"><?php _e('Paste <a href="http://www.google.com/fonts" target="_blank">Google Fonts</a> invocation code (including &lt;link /&gt; tag).', 'entheme'); ?></p>
+                    </td>
+                </tr>
+            </table>
+            <h3 class="title"><?php _e('Other', 'entheme'); ?></h3>
+            <table class="form-table">
+                <tr valign="top">
+                    <th scope="row"><label for="copyright_text"><?php _e('Footer copyright text', 'entheme'); ?></label></th>
+                    <td>
+                        <input type="text" class="large-text code" name="copyright_text" value="<?php echo esc_attr(get_option('copyright_text')); ?>" />
                     </td>
                 </tr>
             </table>

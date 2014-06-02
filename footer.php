@@ -14,8 +14,8 @@
 			<?php entheme_social_links(); ?>
 		</div>
 		<div id="copyright">
-			<p>Copyright &copy; 2013. Enfinita</p>
-		</div>		
+			<p><?php echo get_option('copyright_text'); ?></p>
+		</div>
 	</footer>
 </div><!-- #page -->
 

@@ -48,4 +48,3 @@ if ('' === get_option('permalink_structure')) {
         });
     });
     </script>
-    <?php do_action('entheme_instantiate_slider'); ?>

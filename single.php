@@ -7,25 +7,33 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+    <div id="primary" class="content-area">
 
-		<?php while ( have_posts() ) : the_post(); ?>
+        <?php /* The loop */ ?>
+        <?php while ( have_posts() ) : the_post(); ?>
 
-			<?php get_template_part( 'content', 'single' ); ?>
+            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                <header class="entry-header">
+                    <?php if ( has_post_thumbnail() && ! post_password_required() ) : ?>
+                    <div class="entry-thumbnail">
+                        <?php the_post_thumbnail(); ?>
+                    </div>
+                    <?php endif; ?>
 
-			<?php entheme_content_nav( 'nav-below' ); ?>
+                    <h1 class="entry-title"><?php the_title(); ?></h1>
 
-			<?php
-				// If comments are open or we have at least one comment, load up the comment template
-				if ( comments_open() || '0' != get_comments_number() )
-					comments_template();
-			?>
+                    <div class="entry-meta">
+                        <span class="post-date"><i class="fa fa-clock-o"></i> <?php the_date(); ?></span>
+                    </div><!-- .entry-meta -->
+                </header><!-- .entry-header -->
 
-		<?php endwhile; // end of the loop. ?>
+                <div class="entry-content">
+                    <?php the_content(); ?>
+                </div><!-- .entry-content -->
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+            </article><!-- #post -->
+        <?php endwhile; ?>
 
-<?php get_sidebar(); ?>
-<?php get_footer(); ?>
+    </div><!-- #primary -->
+
+<?php get_footer();

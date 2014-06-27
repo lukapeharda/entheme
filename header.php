@@ -23,14 +23,14 @@
 <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class(); ?> id="top">
 <div id="page" class="hfeed site">
 	<?php do_action( 'before' ); ?>
 	<header id="masthead" class="site-header" role="banner">
 		<?php $nav_logo = get_option('logo_navigation'); ?>
 		<?php if (!empty($nav_logo)): ?>
 		<div class="site-branding">
-			<a href="<?php echo site_url(); ?>#page" class="logo-navigation<?php if(is_home()) : ?> hidden<?php endif; ?>" rel="home" title="<?php bloginfo('name'); ?>"><img src="<?php echo esc_url($nav_logo); ?>" alt="<?php bloginfo('name'); ?>" /></a>
+			<a href="<?php echo site_url(); ?>#top" class="logo-navigation<?php if(is_home()) : ?> hidden<?php endif; ?>" rel="home" title="<?php bloginfo('name'); ?>"><img src="<?php echo esc_url($nav_logo); ?>" alt="<?php bloginfo('name'); ?>" /></a>
 		</div>
 		<?php endif; ?>
 

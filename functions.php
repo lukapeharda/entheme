@@ -43,7 +43,7 @@ function entheme_setup() {
      *
      * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
      */
-    add_theme_support('post-thumbnails');
+    // add_theme_support('post-thumbnails');
 
     /**
      * This theme uses wp_nav_menu() in one location.
@@ -92,8 +92,15 @@ function entheme_get_post_meta($post_id, $key, $default)
 
 function entheme_nav_menu_link_attributes($atts, $item, $args)
 {
+    /*
+     * If page shouldn't be shown on front then it needs to have original URL
+     */
+    if ('1' !== get_post_meta($item->object_id, 'page_show_front', true)) {
+        return $atts;
+    }
+
     if ('' === get_option('permalink_structure')) {
-        $atts['href'] = '#post-' . $item->object_id;
+        $atts['href'] = site_url() . '#post-' . $item->object_id;
     } else {
         $atts['href'] = apply_filters('entheme_page_slug', $item->url, true);
     }

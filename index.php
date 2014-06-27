@@ -17,7 +17,17 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 			<?php get_template_part('home-page'); ?>
 
-			<?php $entheme_pages = new WP_Query(array('post_type' => 'page', 'post_status' => 'publish', 'nopaging' => true, 'orderby' => 'menu_order', 'order' => 'ASC')); ?>
+			<?php
+				$entheme_pages = new WP_Query(array(
+					'post_type' => 'page',
+					'post_status' => 'publish',
+					'nopaging' => true,
+					'orderby' => 'menu_order',
+					'order' => 'ASC',
+					'meta_key' => 'page_show_front',
+					'meta_value' => '1',
+				));
+			?>
 
 			<?php if ($entheme_pages->have_posts()) : ?>
 			<div id="pages">

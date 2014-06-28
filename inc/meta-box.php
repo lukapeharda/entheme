@@ -12,7 +12,7 @@ function entheme_page_meta_box($post)
 	$page_background_color = entheme_get_post_meta($post->ID, 'page_background_color', ENTHEME_DEFAULT_PAGE_BACKGROUND_COLOR);
 	$page_text_color = entheme_get_post_meta($post->ID, 'page_text_color', ENTHEME_DEFAULT_PAGE_TEXT_COLOR);
     $page_menu_color = entheme_get_post_meta($post->ID, 'page_menu_color', '0');
-	$page_show_front = entheme_get_post_meta($post->ID, 'page_show_front', '1');
+	$page_show_front = entheme_get_post_meta($post->ID, 'page_show_front', '0');
 	?>
 	<p><strong><?php _e('Page Background Color'); ?></strong></p>
 	<p><input type="text" name="page_background_color" value="<?php echo esc_attr($page_background_color); ?>" class="entheme-color-picker" data-default-color="<?php echo ENTHEME_DEFAULT_PAGE_BACKGROUND_COLOR; ?>" /></p>
@@ -54,7 +54,7 @@ function entheme_save_page_meta_box($post_id)
     if (isset($_POST['page_show_front'])) {
         $page_show_front = sanitize_text_field($_POST['page_show_front']);
     } else {
-        $page_show_front = 1;
+        $page_show_front = 0;
     }
 
 	update_post_meta($post_id, 'page_background_color', $page_background_color);

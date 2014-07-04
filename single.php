@@ -23,7 +23,7 @@ get_header(); ?>
                     <h1 class="entry-title"><?php the_title(); ?></h1>
 
                     <div class="entry-meta">
-                        <span class="post-date"><i class="fa fa-clock-o"></i> <?php the_date(); ?></span>
+                        <p class="post-date"><i class="fa fa-clock-o"></i> <?php the_date(); ?></p>
                     </div><!-- .entry-meta -->
                 </header><!-- .entry-header -->
 

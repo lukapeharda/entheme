@@ -163,7 +163,7 @@ function entheme_generate_head_code()
         return;
     }
 
-    echo $head_code;
+    echo '<script>' . $head_code . '</script>';
 }
 add_action('wp_head', 'entheme_generate_head_code');
 

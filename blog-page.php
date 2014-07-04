@@ -26,7 +26,7 @@ if ('' === get_option('permalink_structure')) {
                     <?php while ($posts->have_posts()) : $posts->the_post(); ?>
                     <li>
                         <h2><?php the_title(); ?></h2>
-                        <span class="post-date"><i class="fa fa-clock-o"></i> <?php the_date(); ?></span>
+                        <p class="post-date"><i class="fa fa-clock-o"></i> <?php the_date(); ?></p>
                         <?php the_content(); ?>
                     </li>
                     <?php endwhile; ?>
@@ -38,6 +38,9 @@ if ('' === get_option('permalink_structure')) {
     <script>
     jQuery(document).ready(function() {
         jQuery('.flexslider').flexslider({
+            <?php if ($wp_query->posts->post_count < 2) : ?>
+            directionNav: false,
+            <?php endif; ?>
             animation: "slide",
             controlNav: false,
             slideshow: false,

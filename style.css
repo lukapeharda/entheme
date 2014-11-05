@@ -415,7 +415,6 @@ a:active {
 .main-navigation li {
 	float: left;
 	position: relative;
-	padding: 0.5em;
 	margin: 0.5em;
 }
 .main-navigation li:hover {
@@ -426,6 +425,7 @@ a:active {
 	text-decoration: none;
 	color: #333333;
 	font-size: 1.2em;
+	padding: 0.5em;
 }
 .main-navigation a:hover {
 	color: #ffffff;

@@ -60,7 +60,7 @@ add_action('after_setup_theme', 'entheme_setup');
  */
 function entheme_scripts() {
     wp_enqueue_style('entheme-style', get_stylesheet_uri());
-    wp_enqueue_style('font-awesome', '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css');
+    wp_enqueue_style('font-awesome', '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css');
 
     wp_enqueue_script('entheme-navigation', get_template_directory_uri() . '/js/navigation.js', array('jquery'), '20120206', true);
     wp_enqueue_script('entheme-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true);
@@ -201,31 +201,6 @@ function entheme_instantiate_slider()
     wp_enqueue_script('flexslider', get_template_directory_uri() . '/js/jquery.flexslider-min.js', array('jquery'));
 }
 add_action('get_template_part_blog-page', 'entheme_instantiate_slider');
-
-// Fragment cache based on Mark Jaquith code
-function entheme_fragment_cache_output()
-{
-    $output = get_transient('entheme_everything');
-    if (!empty($output)) {
-        echo $output;
-        return true;
-    } else {
-        ob_start();
-        return false;
-    }
-}
-
-function entheme_fragment_cache_store()
-{
-    $output = ob_get_flush();
-    set_transient('entheme_everything', $output, 24 * HOUR_IN_SECONDS);
-}
-
-function entheme_fragment_cache_delete($post_id)
-{
-    delete_transient('entheme_everything');
-}
-add_action('save_post', 'entheme_fragment_cache_delete');
 
 /**
  * Custom functions that act independently of the theme templates.

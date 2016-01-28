@@ -152,7 +152,7 @@ function entheme_generate_css()
 
 <?php endif; ?>
 </style>
-    <?
+    <?php
 }
 add_action('wp_head', 'entheme_generate_css');
 

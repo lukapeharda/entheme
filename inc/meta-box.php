@@ -22,7 +22,7 @@ function entheme_page_meta_box($post)
     <p><label for="page_menu_color"><input type="checkbox" name="page_menu_color" value="1"<?php checked('1', $page_menu_color); ?> /> <?php _e('Use page background color', 'entheme'); ?></label></p>
     <p><strong><?php _e('Show on frontpage', 'entheme'); ?></strong></p>
     <p><label for="page_show_front"><input type="checkbox" name="page_show_front" value="1"<?php checked('1', $page_show_front); ?> /> <?php _e('Display this page on homepage', 'entheme'); ?></label></p>
-    <?
+    <?php
 }
 
 function entheme_save_page_meta_box($post_id)

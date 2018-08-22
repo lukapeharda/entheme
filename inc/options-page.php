@@ -89,6 +89,7 @@ function entheme_register_settings()
 
     register_setting('entheme-settings-group-map', 'entheme_map_style');
     register_setting('entheme-settings-group-map', 'entheme_map_coordinates');
+    register_setting('entheme-settings-group-map', 'entheme_map_key');
     register_setting('entheme-settings-group-map', 'entheme_map_zoom');
 
     register_setting('entheme-settings-group-styling', 'custom_css');
@@ -248,6 +249,13 @@ function entheme_settings_page()
             <?php do_action('entheme-settings-group-map'); ?>
             <h3 class="title"><?php _e('Map options', 'entheme'); ?></h3>
             <table class="form-table">
+                <tr valign="top">
+                    <th scope="row"><label for="entheme_map_key"><?php _e('API Key', 'entheme'); ?></label></th>
+                    <td>
+                        <input type="text" class="regular-text code" name="entheme_map_key" value="<?php echo get_option('entheme_map_key'); ?>" />
+                        <p class="description"><?php _e('Enter Google Maps API Key.', 'entheme'); ?></p>
+                    </td>
+                </tr>
                 <tr valign="top">
                     <th scope="row"><label for="entheme_map_coordinates"><?php _e('Coordinates', 'entheme'); ?></label></th>
                     <td>
